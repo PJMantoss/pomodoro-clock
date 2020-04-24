@@ -19,15 +19,15 @@ export class App extends Component {
   }
 
   lengthControl = (stateToChange, sign, currentLength, timerType) => {
-    if (this.state.timerState === "running") return;
-    if (this.state.timerType === timerType){
-      if (sign === "-" && currentLength !== 1){
+    if (this.state.timerState == "running") return;
+    if (this.state.timerType == timerType){
+      if (sign == "-" && currentLength != 1){
         this.setState({[stateToChange]: currentLength - 1})
-      } else if (sign === "+" && currentLength !== 60){
+      } else if (sign == "+" && currentLength != 60){
         this.setState({[stateToChange]: currentLength + 1})
       }
     } else {
-      if (sign === "-" && currentLength !== 1){
+      if (sign == "-" && currentLength != 1){
         this.setState({
           [stateToChange]: currentLength + 1,
           timer: currentLength * 60 + 60
@@ -70,15 +70,15 @@ export class App extends Component {
     this.warning(timer);
     this.buzzer(timer);
     if(timer < 0){
-        if(this.setState({timerType: 'Session'})) {
-        this.state.intervalID && this.state.intervalID.cancel();
-        this.beginCountDown();
-        this.switchTimer(this.state.brkLength * 60, 'Break');
-      } else {
-        this.state.intervalID && this.state.intervalID.cancel();
-        this.beginCountDown();
-        this.switchTimer(this.state.sessionLen * 60, 'Session');
-      };
+       this.state.timerType = 'Session' ? (
+        this.state.intervalID && this.state.intervalID.cancel(),
+        this.beginCountDown(),
+        this.switchTimer(this.state.brkLength * 60, 'Break')
+        ) : (
+        this.state.intervalID && this.state.intervalID.cancel(),
+        this.beginCountDown(),
+        this.switchTimer(this.state.sessionLen * 60, 'Session')
+        );
     }
   }
 
@@ -95,13 +95,13 @@ export class App extends Component {
   }
 
   timerControl = () => {
-    if (this.setState({timerState: 'stopped'})){
-      this.beginCountDown();
-      this.setState({timerState: 'running'});
-       } else {
-      this.setState({timerState: 'stopped'});
-      this.state.intervalID && this.state.intervalID.cancel();
-       }
+     this.state.timerState = 'stopped' ? (
+      this.beginCountDown(),
+      this.setState({timerState: 'running'})
+       ) : (
+      this.setState({timerState: 'stopped'}),
+      this.state.intervalID && this.state.intervalID.cancel()
+       )
   }
 
   clockify = () => {
@@ -171,7 +171,7 @@ export class App extends Component {
           </button>
 
           <button id="reset" onClick={this.reset}>
-            <i className="fa fa-refresh fa-2x"/>
+            <i className="fa fa-refresh fa-2x" aria-hidden="true" />
           </button>
         </div>
 

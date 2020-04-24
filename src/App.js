@@ -139,7 +139,12 @@ export class App extends Component {
             length={this.state.brkLength}
         />
 
-        <TimerControl />
+        <TimerControl
+            titleID="session-label" minID="session-decrement" 
+            addID="session-increment" lengthID="session-length" 
+            title="Session Length" onClick={this.setSessionLen} 
+            length={this.state.sessionLen}
+        />
 
         <div className="timer">
           <div className="timer-wrapper">

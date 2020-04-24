@@ -48,3 +48,8 @@ button {
   margin-left: -95px;
   margin-top: -57px;
 }
+
+#time-left {
+  font-family: digital;
+  font-size: 80px;
+}

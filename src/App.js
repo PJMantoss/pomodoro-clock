@@ -54,6 +54,14 @@ export class App extends Component {
     this.setState({timer: this.state.timer - 1})
   }
 
+  switchTimer = (num, str) => {
+    this.setState({
+      timer: num,
+      timerType: str,
+      alarmColor: {color: 'white'}
+    })
+  }
+
   phaseControl = () => {
     let timer = this.state.timer;
     this.warning(timer);
@@ -71,9 +79,17 @@ export class App extends Component {
     }
   }
 
-  warning = () => {}
+  warning = _timer => {
+    let warn = _timer < 61 ?
+    this.setState({alarmColor: {color:'#a50d0d'}}) :
+    this.setState({alarmColor: {color:'white'}});
+  }
 
-  buzzer = () => {}
+  buzzer = _timer => {
+    if (_timer === 0){
+      this.audioBeep.play();
+    }
+  }
 
   timerControl = () => {
     let control = this.state.timerState == 'stopped' ? (

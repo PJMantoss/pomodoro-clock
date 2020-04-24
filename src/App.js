@@ -14,6 +14,20 @@ export class App extends Component {
       alarmColor: { color: 'white' }
     }
   }
+
+  lengthControl = (stateToChange, sign, currentLength, timerType) => {
+    if (this.state.timerState == "running") return;
+    if (this.state.timerType == timerType){
+      if (sign == '-' && currentLength != 1){
+        this.setState({[stateToChange]: currentLength - 1})
+      } else if (sign == "+" && currentLength != 60){
+        this.setState({[stateToChange]: currentLength + 1})
+      }
+    }
+  }
+
+  setBrkLength = e => {}
+
   render() {
     return (
       <div>

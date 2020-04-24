@@ -19,13 +19,13 @@ export class App extends Component {
   lengthControl = (stateToChange, sign, currentLength, timerType) => {
     if (this.state.timerState == "running") return;
     if (this.state.timerType == timerType){
-      if (sign == '-' && currentLength != 1){
+      if (sign == "-" && currentLength != 1){
         this.setState({[stateToChange]: currentLength - 1})
       } else if (sign == "+" && currentLength != 60){
         this.setState({[stateToChange]: currentLength + 1})
       }
     } else {
-      if (sign == '-' && currentLength != 1){
+      if (sign == "-" && currentLength != 1){
         this.setState({
           [stateToChange]: currentLength + 1,
           timer: currentLength * 60 + 60
@@ -44,15 +44,15 @@ export class App extends Component {
 
   beginCountDown = () => {
     this.setState({
-      intervalID: accurateInterval(() => {
+      intervalID: setInterval(() => {
         this.decrementTimer();
         this.phaseControl();
       }, 1000)
-    })
+    });
   }
 
   decrementTimer = () => {
-    this.setState({timer: this.state.timer - 1})
+    this.setState({timer: this.state.timer - 1});
   }
 
   switchTimer = (num, str) => {
@@ -68,7 +68,7 @@ export class App extends Component {
     this.warning(timer);
     this.buzzer(timer);
     if (timer < 0){
-      this.state.timerType == 'Session' ? (
+        this.state.timerType == 'Session' ? (
         this.state.intervalID && this.state.intervalID.cancel(),
         this.beginCountDown(),
         this.switchTimer(this.state.brkLength * 60, 'Break')
@@ -80,13 +80,13 @@ export class App extends Component {
     }
   }
 
-  warning = _timer => {
+  warning = (_timer) => {
     let warn = _timer < 61 ?
     this.setState({alarmColor: {color:'#a50d0d'}}) :
     this.setState({alarmColor: {color:'white'}});
   }
 
-  buzzer = _timer => {
+  buzzer = (_timer) => {
     if (_timer === 0){
       this.audioBeep.play();
     }
@@ -172,7 +172,7 @@ export class App extends Component {
             <i className="fa fa-refresh fa-2x"/>
           </button>
         </div>
-        
+
         <audio 
             id="beep" 
             preload="auto" 

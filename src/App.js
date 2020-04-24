@@ -41,7 +41,18 @@ export class App extends Component {
     this.lengthControl('sessionLen', e.currentTarget.value, this.state.sessionLen, 'Break');
   }
 
-  beginCountDown = () => {}
+  beginCountDown = () => {
+    this.setState({
+      intervalID: accurateInterval(() => {
+        this.decrementTimer();
+        this.phaseControl();
+      }, 1000)
+    })
+  }
+
+  decrementTimer = () => {
+    this.setState({timer: this.state.timer - 1})
+  }
 
   timerControl = () => {
     let control = this.state.timerState == 'stopped' ? (

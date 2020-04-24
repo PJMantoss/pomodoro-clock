@@ -53,3 +53,7 @@ button {
   font-family: digital;
   font-size: 80px;
 }
+
+.timer-control button:active {
+  color: #13353a;
+}

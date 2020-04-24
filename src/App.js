@@ -172,6 +172,13 @@ export class App extends Component {
             <i className="fa fa-refresh fa-2x"/>
           </button>
         </div>
+        
+        <audio 
+            id="beep" 
+            preload="auto" 
+            src="https://goo.gl/65cBl1" 
+            ref={(audio) => {this.audioBeep = audio;}} 
+        />
       </div>
     )
   }

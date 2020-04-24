@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const TimerControl = (props) => {
     return (
@@ -18,6 +18,7 @@ const TimerControl = (props) => {
             <div id={props.lengthID} className="btn-level">
                 {props.length}
             </div>
+
             <button
                 id={props.addID} 
                 className="btn-level" 

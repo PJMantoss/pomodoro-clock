@@ -44,7 +44,7 @@ export class App extends Component {
 
   beginCountDown = () => {
     this.setState({
-      intervalID: setInterval(() => {
+      intervalID: accurateInterval(() => {
         this.decrementTimer();
         this.phaseControl();
       }, 1000)

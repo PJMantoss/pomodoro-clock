@@ -154,7 +154,7 @@ export class App extends Component {
               {this.state.timerType}
             </div>
 
-            <div className="timer-left">
+            <div id="time-left">
               {this.clockify()}
             </div>
 

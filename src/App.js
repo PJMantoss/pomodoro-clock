@@ -23,10 +23,35 @@ export class App extends Component {
       } else if (sign == "+" && currentLength != 60){
         this.setState({[stateToChange]: currentLength + 1})
       }
+    } else {
+      if (sign == '-' && currentLength != 1){
+        this.setState({
+          [stateToChange]: currentLength + 1,
+          timer: currentLength * 60 + 60
+        });
+      }
     }
   }
 
-  setBrkLength = e => {}
+  setBrkLength = e => {
+    this.lengthControl('brkLength', e.currentTarget.value, this.state.brkLength, 'Session');
+  }
+
+  setSessionLen = e => {
+    this.lengthControl('sessionLen', e.currentTarget.value, this.state.sessionLen, 'Break');
+  }
+
+  beginCountDown = () => {}
+
+  timerControl = () => {
+    let control = this.state.timerState == 'stopped' ? (
+      this.beginCountDown(),
+      this.setState({timerState: 'running'})
+    ) : (
+      this.setState({timerState: 'stopped'}),
+      this.state.intervalID && this.state.intervalID.cancel()
+    )
+  }
 
   render() {
     return (

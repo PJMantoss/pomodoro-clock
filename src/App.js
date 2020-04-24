@@ -110,7 +110,18 @@ export class App extends Component {
   }
 
   reset = () => {
-    this.setState({})
+    this.setState({
+      brkLength: 5,
+      sessionLen: 25,
+      timerState: "stopped",
+      timerType: "Session",
+      timer: 1500,
+      intervalID: '',
+      alarmColor: { color: 'white' }
+    })
+    this.state.intervalID && this.state.intervalID.cancel();
+    this.audioBeep.pause();
+    this.audioBeep.currentTime = 0;
   }
 
   render() {

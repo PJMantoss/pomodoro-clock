@@ -149,7 +149,7 @@ export class App extends Component {
         <div className="timer" style={this.state.alarmColor}>
 
           <div className="timer-wrapper">
-            
+
             <div className="timer-label">
               {this.state.timerType}
             </div>
@@ -163,8 +163,14 @@ export class App extends Component {
         </div>
 
         <div className="timer-control">
-          <button></button>
-          <button></button>
+          <button id="start_stop" onClick={this.timerControl}>
+            <i className="fa fa-play fa-2x" />
+            <i className="fa fa-pause fa-2x" />
+          </button>
+
+          <button id="reset" onClick={this.reset}>
+            <i className="fa fa-refresh fa-2x"/>
+          </button>
         </div>
       </div>
     )

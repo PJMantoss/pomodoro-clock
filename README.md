@@ -1,3 +1,10 @@
+The Pomodoro Clock works based on the Pomodoro Technique, a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. Each interval is known as a pomodoro, from the Italian word for 'tomato', after the tomato-shaped kitchen timer that Cirillo used as a university student (https://en.wikipedia.org/wiki/Pomodoro_Technique).
+
+The project is built with React JS and Sass.
+
+Project Date: 24-Apr-2020
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -17,15 +17,15 @@ export class App extends Component {
   }
 
   lengthControl = (stateToChange, sign, currentLength, timerType) => {
-    if (this.state.timerState == "running") return;
-    if (this.state.timerType == timerType){
-      if (sign == "-" && currentLength != 1){
+    if (this.state.timerState === "running") return;
+    if (this.state.timerType === timerType){
+      if (sign === "-" && currentLength !== 1){
         this.setState({[stateToChange]: currentLength - 1})
-      } else if (sign == "+" && currentLength != 60){
+      } else if (sign === "+" && currentLength !== 60){
         this.setState({[stateToChange]: currentLength + 1})
       }
     } else {
-      if (sign == "-" && currentLength != 1){
+      if (sign === "-" && currentLength !== 1){
         this.setState({
           [stateToChange]: currentLength + 1,
           timer: currentLength * 60 + 60
@@ -67,21 +67,21 @@ export class App extends Component {
     let timer = this.state.timer;
     this.warning(timer);
     this.buzzer(timer);
-    if (timer < 0){
-        this.state.timerType == 'Session' ? (
-        this.state.intervalID && this.state.intervalID.cancel(),
-        this.beginCountDown(),
-        this.switchTimer(this.state.brkLength * 60, 'Break')
-      ) : (
-        this.state.intervalID && this.state.intervalID.cancel(),
-        this.beginCountDown(),
-        this.switchTimer(this.state.brkLength * 60, 'Session')
-      );
+    if(timer < 0){
+        if(this.setState({timerType: 'Session'})) {
+        this.state.intervalID && this.state.intervalID.cancel();
+        this.beginCountDown();
+        this.switchTimer(this.state.brkLength * 60, 'Break');
+      } else {
+        this.state.intervalID && this.state.intervalID.cancel();
+        this.beginCountDown();
+        this.switchTimer(this.state.brkLength * 60, 'Session');
+      };
     }
   }
 
   warning = (_timer) => {
-    let warn = _timer < 61 ?
+    _timer < 61 ?
     this.setState({alarmColor: {color:'#a50d0d'}}) :
     this.setState({alarmColor: {color:'white'}});
   }
@@ -93,13 +93,13 @@ export class App extends Component {
   }
 
   timerControl = () => {
-    let control = this.state.timerState == 'stopped' ? (
-      this.beginCountDown(),
-      this.setState({timerState: 'running'})
-    ) : (
-      this.setState({timerState: 'stopped'}),
-      this.state.intervalID && this.state.intervalID.cancel()
-    )
+    if (this.setState({timerState: 'stopped'})){
+      this.beginCountDown();
+      this.setState({timerState: 'running'});
+       } else {
+      this.setState({timerState: 'stopped'});
+      this.state.intervalID && this.state.intervalID.cancel();
+       }
   }
 
   clockify = () => {

@@ -11,6 +11,7 @@
 
 .length-control {
   width: 250px;
+  display: inline-block;
 }
 
 button {
@@ -19,4 +20,12 @@ button {
   border: none;
   color: white;
   cursor: pointer;
+}
+
+.btn-level{
+  display: inline-block;
+}
+
+.btn-level:nth-child(3){
+  width: 40px;
 }

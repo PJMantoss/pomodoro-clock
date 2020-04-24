@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import TimerControl from './TimerControl';
 import './App.css'
 
 export class App extends Component {
@@ -127,7 +128,30 @@ export class App extends Component {
   render() {
     return (
       <div>
-        
+        <div className="main-title">
+          Pomodoro Clock
+        </div>
+
+        <TimerControl 
+            titleID="break-label" minID="break-decrement" 
+            addID="break-increment" lengthID="break-length" 
+            title="Break Length" onClick={this.setBrkLength} 
+            length={this.state.brkLength}
+        />
+
+        <TimerControl />
+
+        <div className="timer">
+          <div className="timer-wrapper">
+            <div className="timer-label"></div>
+            <div className="timer-left"></div>
+          </div>
+        </div>
+
+        <div className="timer-control">
+          <button></button>
+          <button></button>
+        </div>
       </div>
     )
   }

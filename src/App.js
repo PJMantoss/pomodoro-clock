@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TimerControl from './TimerControl';
-import './App.css'
+import './App.css';
+
+let accurateInterval = require('accurate-interval');
 
 export class App extends Component {
   constructor(props){
@@ -75,7 +77,7 @@ export class App extends Component {
       } else {
         this.state.intervalID && this.state.intervalID.cancel();
         this.beginCountDown();
-        this.switchTimer(this.state.brkLength * 60, 'Session');
+        this.switchTimer(this.state.sessionLen * 60, 'Session');
       };
     }
   }

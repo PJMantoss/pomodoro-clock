@@ -9,14 +9,23 @@ const TimerControl = (props) => {
             <button 
                 id={props.minID} 
                 className="btn-level" 
-                value="" 
+                value="-" 
                 onClick={props.onClick}
             >
-                <i/>
+                <i className="fa fa-arrow-down fa-2x" />
             </button>
 
-            <div></div>
-            <button></button>
+            <div id={props.lengthID} className="btn-level">
+                {props.length}
+            </div>
+            <button
+                id={props.addID} 
+                className="btn-level" 
+                value="+" 
+                onClick={props.onClick}
+            >
+                <i className="fa fa-arrow-up fa-2x"/>
+            </button>
         </div>
     )
 }

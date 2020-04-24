@@ -146,11 +146,20 @@ export class App extends Component {
             length={this.state.sessionLen}
         />
 
-        <div className="timer">
+        <div className="timer" style={this.state.alarmColor}>
+
           <div className="timer-wrapper">
-            <div className="timer-label"></div>
-            <div className="timer-left"></div>
+            
+            <div className="timer-label">
+              {this.state.timerType}
+            </div>
+
+            <div className="timer-left">
+              {this.clockify()}
+            </div>
+
           </div>
+
         </div>
 
         <div className="timer-control">
